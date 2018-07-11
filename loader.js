@@ -13,6 +13,8 @@ export class Loader {
     loaderRouter() {
         this.loadController()
         this.loadService()
+        this.loadConfig()
+        
         const r = bp.getRouter()
         console.log(r) // 打印日志
         Object.keys(r).forEach(url => {
@@ -23,8 +25,6 @@ export class Loader {
                 })
             })
         })
-
-
         return this.router.routes()
     }
 
@@ -55,5 +55,22 @@ export class Loader {
                 return loaded.services
             }
         })
+    }
+
+    loadConfig() {
+        const configDef = __dirname + '/config/config.default.js'
+        const configEnv =
+            __dirname +
+            (process.env.NODE_ENV === 'production'
+                ? '/config/config.pro.js'
+                : '/config/config.dev.js');
+        const conf = require(configEnv);
+        const confDef = require(configDef);
+        const merge = Object.assign({}, conf, confDef);
+        Object.defineProperty(this.app, 'config', {
+            get: () => {
+                return merge;
+            },
+        });
     }
 }
