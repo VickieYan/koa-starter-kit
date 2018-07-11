@@ -8,6 +8,6 @@ const loader = new Loader(app)
 app.use(bodyParser())
 app.use(loader.loaderRouter())
 
-app.listen(3000, '127.0.0.1', () => {
-    console.log('server listening on port 3000')
+app.listen(app.config.port, '127.0.0.1', () => {
+    console.log(`server listening on port ${app.config.port}`)
 })
