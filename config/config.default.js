@@ -15,5 +15,6 @@ export default {
                 idle: 10000
             }
         }
-    }
+    },
+    trustOrigin: 'http://127.0.0.1:8081'
 }

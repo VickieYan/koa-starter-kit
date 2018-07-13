@@ -9,6 +9,6 @@ export default class User extends Controller {
         const userList = await this.ctx.model.User.findAll({
             raw: true
         })
-        console.log(userList)
+        
     }
 }

@@ -16,7 +16,7 @@ export class Loader {
         this.loadService()
         this.loadModel()
         const r = bp.getRouter()
-        console.log(r) // 打印日志 查看blueprint
+        // console.log(r) // 打印日志 查看blueprint
         Object.keys(r).forEach(url => {
             r[url].forEach(blueprint => {
                 this.router[blueprint.httpMethod](url, async (ctx) => {
@@ -74,7 +74,7 @@ export class Loader {
                     models.forEach(model => {
                         const modelName = model.split('.')[0]
                         const mod = require(__dirname + '/models/' + modelName).default
-                        console.log(mod) // 打印日志 数据模型
+                        // console.log(mod) // 打印日志 数据模型
                         loaded.models[modelName] = mod(sequelize, Sequelize)
                     })
                 }

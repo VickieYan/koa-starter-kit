@@ -10,6 +10,12 @@ const User = (sequelize, Sequelize) => sequelize.define('user', {
     password: {
         type: Sequelize.STRING(255),
         allowNull: false
+    },
+    age: {
+        type: Sequelize.INTEGER,
+    },
+    level: {
+        type: Sequelize.INTEGER,
     }
   })
 
